@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <!--enable 会自动生成全局usings文件-->
+    <!--disable 不会生成文件，但是全局 using 还是可以用-->
+    <ImplicitUsings>disable</ImplicitUsings>
+  </PropertyGroup>
+</Project>

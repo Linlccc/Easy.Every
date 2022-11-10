@@ -1,0 +1,31 @@
+<Project>
+  <PropertyGroup Label="计算基本目录">
+    <!--EasyEvery 根目录-->
+    <EasyEveryRootDir>$(MSBuildThisFileDirectory)</EasyEveryRootDir>
+
+    <!--EasyEvery 公共目录-->
+    <EasyEveryCommonDir>$([MSBuild]::NormalizeDirectory($(EasyEveryRootDir),'Easy.Every.Common'))</EasyEveryCommonDir>
+
+    <!--EasyEvery msbuild 导入目录-->
+    <EasyEveryMSBuildImportDir>$([MSBuild]::NormalizeDirectory($(EasyEveryRootDir),'easyeveryMSBuildImport'))</EasyEveryMSBuildImportDir>
+    <!--EasyEvery 自动导入目录(设置成属性后msbuild自动导入)-->
+    <EasyEveryAutoImportDir>$([MSBuild]::NormalizeDirectory($(EasyEveryMSBuildImportDir),'autoImport'))</EasyEveryAutoImportDir>
+
+    <!--生成文件目录-->
+    <GenerateDir>$([MSBuild]::NormalizeDirectory($(EasyEveryRootDir),'artifacts'))</GenerateDir>
+    <!--bin 目录-->
+    <GenerateBinDir>$([MSBuild]::NormalizeDirectory($(GenerateDir),'bin'))</GenerateBinDir>
+    <!--obj 目录-->
+    <GenerateObjDir>$([MSBuild]::NormalizeDirectory($(GenerateDir),'obj'))</GenerateObjDir>
+  </PropertyGroup>
+
+  <!-- 项目基础配置（1） -->
+  <Import Project="$(EasyEveryMSBuildImportDir)baseConfigure.props" />
+  <!-- 导入 自动导入文件属性（随意） -->
+  <Import Project="$(EasyEveryMSBuildImportDir)autoImport.props" />
+
+  <ItemGroup Label="引入全局默认using">
+    <!-- Microsoft.Net.Sdk -->
+    <Compile Include="$(EasyEveryCommonDir)MicrosoftNETSdk.GlobalUsings.cs" Link="Common\$(MsBuildProjectName).%(Filename)%(Extension)" Condition="$(UsingMicrosoftNETSdk)=='true'" />
+  </ItemGroup>
+</Project>
