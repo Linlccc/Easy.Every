@@ -15,4 +15,8 @@
     <Page Include="App.xaml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Easy.Every.Infrastructure\Easy.Every.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

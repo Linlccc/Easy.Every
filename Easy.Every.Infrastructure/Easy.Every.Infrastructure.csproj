@@ -10,4 +10,9 @@
     <Folder Include="Logger\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Ben.Demystifier" Version="0.4.1" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="5.1.0" />
+  </ItemGroup>
+
 </Project>
